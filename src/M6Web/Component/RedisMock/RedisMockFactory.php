@@ -318,6 +318,10 @@ CONSTRUCTOR;
             if ($parameter->isPassedByReference()) {
                 $signature .= '&';
             }
+            // variadic
+            if (method_exists($parameter, 'isVariadic') && $parameter->isVariadic()) {
+                $signature .= '...';
+            }
             // paramName
             $signature .= '$' . $parameter->getName();
             // defaultValue
